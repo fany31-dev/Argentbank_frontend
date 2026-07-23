@@ -17,8 +17,18 @@ body {
   flex: 1;
 }
 
+.main-layout {
+  min-height : 80vh;
+}
+
 .bg-dark {
   background-color: #12002b;
+  height: 760px;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
 }
 
 .sr-only {
@@ -71,11 +81,11 @@ body {
 }
 
 .hero {
-  background-image: url('../img/bank-tree.jpeg');
+  background-image: url('../assets/bank-tree.webp');
   background-position: 0 -50px;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 300px;
+  height: 400px;
   position: relative;
 }
 
@@ -102,7 +112,7 @@ body {
 
 @media (min-width: 920px) {
   .hero {
-    height: 400px;
+    height: 430px;
     background-position: 0% 33%;
   }
 
@@ -168,10 +178,10 @@ body {
 .sign-in-content {
   box-sizing: border-box;
   background-color: white;
-  width: 300px;
+  width: 350px;
   margin: 0 auto;
   margin-top: 3rem;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .sign-in-icon {
