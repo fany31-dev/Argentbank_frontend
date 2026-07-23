@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-import BankTree from "../assets/bank-tree.jpeg";
-import IconChat from "../assets/icon-chat.png";
-import IconMoney from "../assets/icon-money.png";
-import IconSecurity from "../assets/icon-security.png";
+import IconChat from "@/assets/icon-chat.webp";
+import IconMoney from "@/assets/icon-money.webp";
+import IconSecurity from "@/assets/icon-security.webp";
 import Features from "../components/Features";
 
 function Home() {
