@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Login() {
   return (
-    <main className="main bg-dark">
+    <main className="main bg-dark flex">
       <section className="sign-in-content">
         <i class="fa fa-user-circle sign-in-icon"></i>
         <h1>Sign In</h1>
@@ -19,11 +19,6 @@ function Login() {
             <input type="checkbox" id="remember-me" />
             <label htmlfor="remember-me">Remember me</label>
           </div>
-          {/* <!-- PLACEHOLDER DUE TO STATIC SITE --> */}
-          <Link to="/" class="sign-in-button">
-            Sign In
-          </Link>
-          {/* <!-- SHOULD BE THE BUTTON BELOW --> */}
           <button class="sign-in-button">Sign In</button>
         </form>
       </section>
