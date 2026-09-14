@@ -13,6 +13,11 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
+    //token pour login
+    setToken: (state, action) => {
+      state.token = action.payload.token;
+    },
+
     //stocke le profil utilisateur//
     getProfile: (state, action) => {
       state.email = action.payload.email;
@@ -25,5 +30,5 @@ export const userSlice = createSlice({
   },
 });
 
-export const { getProfile } = userSlice.actions;
+export const { setToken, getProfile } = userSlice.actions;
 export default userSlice.reducer;
