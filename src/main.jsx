@@ -6,7 +6,7 @@ import "./styles/main.css";
 
 // REDUX
 import { Provider } from "react-redux";
-import store from "./store/store.jsx";
+import store from "./store/store";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
