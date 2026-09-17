@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import IconChat from "@/assets/icon-chat.webp";
 import IconMoney from "@/assets/icon-money.webp";
 import IconSecurity from "@/assets/icon-security.webp";
