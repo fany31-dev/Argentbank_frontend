@@ -18,17 +18,17 @@ body {
 }
 
 .main-layout {
-  min-height : 80vh;
+  min-height: 80vh;
 }
 
 .bg-dark {
   background-color: #12002b;
-  height: 760px;
+  height: 860px;
 }
 
 .flex {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .sr-only {
@@ -81,7 +81,7 @@ body {
 }
 
 .hero {
-  background-image: url('../assets/bank-tree.webp');
+  background-image: url("../assets/bank-tree.webp");
   background-position: 0 -50px;
   background-size: cover;
   background-repeat: no-repeat;
@@ -272,6 +272,7 @@ body {
 .header {
   color: #fff;
   margin-bottom: 2rem;
+  padding-top: 10px;
 }
 
 .transaction-button {
@@ -297,5 +298,10 @@ body {
 
   .transaction-button {
     width: 200px;
+  }
+
+  .bg-dark {
+    background-color: #12002b;
+    height: 720px;
   }
 }
