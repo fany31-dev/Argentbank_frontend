@@ -5,6 +5,7 @@ import Home from "../pages/Home.jsx";
 import Login from "../pages/Login.jsx";
 import Profile from "../pages/Profile.jsx";
 import Error from "../pages/Error.jsx";
+import PrivateRoute from "../components/PrivateRoute.jsx";
 
 function App() {
   return (
@@ -12,7 +13,15 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              {" "}
+              <Profile />
+            </PrivateRoute>
+          }
+        />
         <Route path="*" element={<Error />} />
       </Routes>
     </Layout>
