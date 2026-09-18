@@ -17,7 +17,6 @@ function App() {
           path="/profile"
           element={
             <PrivateRoute>
-              {" "}
               <Profile />
             </PrivateRoute>
           }
