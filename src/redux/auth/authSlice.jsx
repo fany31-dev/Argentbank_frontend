@@ -1,39 +1,47 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { authLoginUser } from "./authThunks";
 
 const authSlice = createSlice({
   name: "auth",
   initialState: {
     token: sessionStorage.getItem("token") || null,
-    loading: false,
+    status: "idle",
     error: null,
   },
 
   reducers: {
-    // Quand on commence le login
-    loginUser: (state) => {
-      state.loading = true;
-      state.error = null;
-    },
-
-    // Quand le token arrive depuis Login.jsx
-    setToken: (state, action) => {
-      state.token = action.payload;
-      state.loading = false;
-      state.error = null;
-      sessionStorage.setItem("token", action.payload);
-    },
-
-    // Quand il y a une erreur
-    loginError: (state, action) => {
-      state.loading = false;
-      state.error = action.payload;
-    },
-    // Déconnexion
-    logout: (state) => {
+    logout(state) {
       state.token = null;
-      sessionStorage.removeItem("token", token);
+      state.status = "idle";
+      state.error = null;
+      sessionStorage.removeItem("token");
     },
   },
+
+  extraReducers: (builder) => {
+    builder
+      // Quand on commence le login
+      .addCase(authLoginUser.pending, (state) => {
+        state.status = "loading";
+        state.error = null;
+      })
+
+      // Quand le token arrive depuis Login.jsx
+      .addCase(authLoginUser.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.token = action.payload; // token reçu du thunk
+        state.error = null;
+        sessionStorage.setItem("token", action.payload);
+      })
+
+      // Quand il y a une erreur
+      .addCase(authLoginUser.rejected, (state, action) => {
+        state.status = "failed";
+        state.user = null;
+        state.error = action.payload?.message || "Erreur inconnue";
+      });
+  },
 });
-export const { loginUser, setToken, loginError, logout } = authSlice.actions;
+
+export const { logout } = authSlice.actions;
 export default authSlice.reducer;
