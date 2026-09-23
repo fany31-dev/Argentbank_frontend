@@ -1,38 +1,28 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { fetchLoginUser } from "../redux/auth/authThunks";
-import { loginUser, setToken, loginError } from "../redux/auth/authSlice";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { authLoginUser } from "../redux/auth/authThunks";
 
 function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("password456"); // ne pas oublier de supprimer //
-
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { token } = useSelector((state) => state.auth);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("password456"); // ne pas oublier de supprimer //
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(loginUser());
 
-    try {
-      const response = await fetchLoginUser(username, password);
-      const token = response;
-      // Si erreur API → on reste sur /login
-      if (!response || response.error) {
-        dispatch(loginError("Identifiants invalides"));
-        return;
-      }
-
-      // On stocke le token
-      dispatch(setToken(token));
-      sessionStorage.setItem("token", token);
-
-      // Redirection
-      window.location.href = "/profile";
-    } catch (error) {
-      console.error("ERREUR API :", error);
-      dispatch(loginError("Erreur serveur"));
-    }
+    // On envoie email + password au thunk
+    dispatch(authLoginUser({ email, password }));
   };
+  // Quand Redux reçoit le token → redirection automatique
+  useEffect(() => {
+    if (token) {
+      navigate("/profile");
+    }
+  }, [token, navigate]);
 
   return (
     <main className="main bg-dark flex">
@@ -41,12 +31,12 @@ function Login() {
         <h1>Sign In</h1>
         <form onSubmit={handleSubmit}>
           <div className="input-wrapper">
-            <label htmlFor="username">Username</label>
+            <label htmlFor="email">Username</label>
             <input
               type="text"
-              id="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               autoComplete="email"
               required
             />
