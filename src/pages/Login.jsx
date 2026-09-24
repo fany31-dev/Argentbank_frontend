@@ -6,7 +6,7 @@ import { authLoginUser } from "../redux/auth/authThunks";
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { token } = useSelector((state) => state.auth);
+  const { token, status, error } = useSelector((state) => state.auth);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("password456"); // ne pas oublier de supprimer //
@@ -57,6 +57,9 @@ function Login() {
             <label htmlFor="remember-me">Remember me</label>
           </div>
           <button className="sign-in-button">Sign In</button>
+          <div>
+            {status === "failed" && <p className="message-error">{error}</p>}
+          </div>
         </form>
       </section>
     </main>

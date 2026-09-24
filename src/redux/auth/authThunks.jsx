@@ -22,7 +22,9 @@ export const authLoginUser = createAsyncThunk(
       if (!response.ok) {
         return rejectWithValue({
           status: response.status,
-          message: data?.message || `Erreur HTTP ${response.status}`,
+          message:
+            "Connexion impossible Identifiant et/ou mot de passe incorrects" ||
+            `Erreur HTTP ${response.status}`,
         });
       }
 
