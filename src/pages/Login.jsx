@@ -56,7 +56,9 @@ function Login() {
             <input type="checkbox" id="remember-me" />
             <label htmlFor="remember-me">Remember me</label>
           </div>
-          <button className="sign-in-button">Sign In</button>
+          <button className="sign-in-button" disabled={status === "loading"}>
+            {status === "loading" ? "En cours de connexion ..." : "Sign In"}
+          </button>
           <div>
             {status === "failed" && <p className="message-error">{error}</p>}
           </div>
