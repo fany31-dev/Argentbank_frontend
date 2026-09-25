@@ -36,6 +36,11 @@ Note : Ce projet utilise les versions REACT, REACT ROUTER, VITE et REDUX fournie
 Page /Home
 
 Page /Login
+• Form permettant la connexion à l'espace securisé avec Email et mot de passe
+• Créatin message d'erreur si probléme dans les informations pour l'identification
+• Stockage du token avec sessionstorage dans le store Redux
+• Navigation vers la page /Profile (espace connecté) avec PrivateRoute
+• Création d'un bouton LogOut pour se déconnecter de l'espace utilisateur dédié
 
 Page /Profile
 
