@@ -60,10 +60,11 @@ body {
 /******ajout style link et bouton Header *****/
 .style-sign-icon {
   margin-right: 10px;
+  font-size: 18px;
 }
 
 .logout-icon {
-  width: 20px;
+  width: 18px;
   margin-right: 10px;
   color: #fff;
 }
@@ -74,6 +75,11 @@ body {
   padding: 8px;
   font-size: 16px;
   text-decoration: none;
+}
+
+.main-nav-item-login {
+  display: flex;
+  align-items: center;
 }
 
 /***********************************/
