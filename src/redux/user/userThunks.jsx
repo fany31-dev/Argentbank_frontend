@@ -1,29 +1,37 @@
-//********************************************************//
-//********************************************************//
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
-//PROFILE
-export async function fetchUserProfile(token) {
-  const userProfileUrl = "http://localhost:3001/api/v1/user/profile";
+const baseUrl = "http://localhost:3001/api/v1";
 
-  try {
-    const response = await fetch(userProfileUrl, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-    });
+export const fetchUserProfile = createAsyncThunk(
+  "user/fetchProfile",
 
-    // verification de la reponse //
-    if (!response.ok) {
-      throw new Error(`Statut de réponse : ${reponse.status}`);
+  async ({ token }, { rejectWithValue }) => {
+    try {
+      const response = await fetch(`${baseUrl}/user/profile`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const dataUser = await response.json();
+
+      //Vérification de la réponse
+      if (!response.ok) {
+        return rejectWithValue({
+          status: response.status,
+          message: `Erreur HTTP ${response.status}`,
+        });
+      }
+
+      console.log("donnees user:", dataUser.body);
+
+      // Redux reçoit le token
+      return dataUser.body;
+    } catch (error) {
+      console.error("Erreur API login : ", error.message);
+      return rejectWithValue({ message: error.message });
     }
-
-    const data = await response.json();
-    console.log(data);
-    return data.body; // email, firstName, lastName, userName
-  } catch (error) {
-    console.error("Erreur API login :", error.message);
-    return null;
-  }
-}
+  },
+);
