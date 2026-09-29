@@ -29,12 +29,10 @@ export const authLoginUser = createAsyncThunk(
       }
 
       const token = data.body.token;
-      console.log("Token reçu :", token);
 
       // Redux reçoit le token
       return token;
     } catch (error) {
-      console.error("Erreur API login : ", error.message);
       return rejectWithValue({ message: error.message });
     }
   },

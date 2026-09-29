@@ -21,7 +21,6 @@ export const fetchUserProfile = createAsyncThunk(
 
       //Récuperation de la réponse
       const dataUser = await response.json();
-      console.log(dataUser.body);
 
       //Vérification de la réponse
       if (!response.ok) {
