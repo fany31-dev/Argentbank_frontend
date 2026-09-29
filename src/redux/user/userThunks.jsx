@@ -5,17 +5,23 @@ const baseUrl = "http://localhost:3001/api/v1";
 export const fetchUserProfile = createAsyncThunk(
   "user/fetchProfile",
 
-  async ({ token }, { rejectWithValue }) => {
+  async (_, { getState, rejectWithValue }) => {
     try {
+      //recuperation du token dans store
+      const token = getState().auth.token;
+
+      // Appel API avec le token stocké
       const response = await fetch(`${baseUrl}/user/profile`, {
-        method: "POST",
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
       });
 
+      //Récuperation de la réponse
       const dataUser = await response.json();
+      console.log(dataUser.body);
 
       //Vérification de la réponse
       if (!response.ok) {
@@ -25,12 +31,9 @@ export const fetchUserProfile = createAsyncThunk(
         });
       }
 
-      console.log("donnees user:", dataUser.body);
-
-      // Redux reçoit le token
+      // retourner données utilisateur
       return dataUser.body;
     } catch (error) {
-      console.error("Erreur API login : ", error.message);
       return rejectWithValue({ message: error.message });
     }
   },
