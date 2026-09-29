@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { authLoginUser } from "../redux/auth/authThunks";
+import { fetchUserProfile } from "../redux/user/userThunks";
 
 function Login() {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ function Login() {
   useEffect(() => {
     if (token) {
       navigate("/profile");
+      dispatch(fetchUserProfile);
     }
   }, [token, navigate]);
 
