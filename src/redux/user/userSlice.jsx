@@ -13,6 +13,7 @@ const userSlice = createSlice({
     error: null,
   },
   reducers: {},
+
   extraReducers: (builder) => {
     builder
       // Requête en cours

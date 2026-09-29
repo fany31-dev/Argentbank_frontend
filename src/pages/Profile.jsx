@@ -1,13 +1,26 @@
 import Account from "../components/Account";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUserProfile } from "../redux/user/userThunks";
 
 function Profile() {
+  const dispatch = useDispatch();
+
+  const { firstName, lastName } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    dispatch(fetchUserProfile());
+  }, [dispatch]);
+
+  console.log("dispatch fetchUserProfile");
+
   return (
     <main className="main bg-dark">
       <div className="header">
         <h1>
           Welcome back
           <br />
-          Tony Jarvis!
+          {firstName} {lastName}
         </h1>
         <button className="edit-button">Edit Name</button>
       </div>
