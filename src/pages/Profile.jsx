@@ -1,7 +1,8 @@
 import Account from "../components/Account";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserProfile } from "../redux/user/userThunks";
+import FormEditUserInfo from "../components/FormUserEdit";
 
 function Profile() {
   const dispatch = useDispatch();
@@ -12,7 +13,10 @@ function Profile() {
     dispatch(fetchUserProfile());
   }, [dispatch]);
 
-  console.log("dispatch fetchUserProfile");
+  const [isEditing, setIsEditing] = useState(false);
+  const toggleEdit = () => {
+    setIsEditing((prev) => !prev);
+  };
 
   return (
     <main className="main bg-dark">
@@ -22,8 +26,15 @@ function Profile() {
           <br />
           {firstName} {lastName}
         </h1>
-        <button className="edit-button">Edit Name</button>
+        {isEditing ? (
+          <FormEditUserInfo />
+        ) : (
+          <button className="edit-button" onClick={toggleEdit}>
+            Edit Name
+          </button>
+        )}
       </div>
+
       <h2 className="sr-only">Accounts</h2>
 
       <Account
