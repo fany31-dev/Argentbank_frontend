@@ -8,11 +8,11 @@ function FormEditUserInfo() {
 
   return (
     <section>
-      <div>
-        <h1>Edit user info</h1>
+      <div className="edit-user-content">
+        <h1 className="edit-user-title">Edit user info</h1>
         <form>
-          <div>
-            <label htmlFor="username">User name</label>
+          <div className="edit-input-wrapper">
+            <label htmlFor="username">User name : </label>
             <input
               type="text"
               id="username"
@@ -21,8 +21,8 @@ function FormEditUserInfo() {
               autoComplete="username"
             />
           </div>
-          <div>
-            <label htmlFor="firstname">First name</label>
+          <div className="edit-input-wrapper">
+            <label htmlFor="firstname">First name : </label>
             <input
               type="text"
               id="firstname"
@@ -31,8 +31,8 @@ function FormEditUserInfo() {
               disabled
             />
           </div>
-          <div>
-            <label htmlFor="firstname">Last name</label>
+          <div className="edit-input-wrapper">
+            <label htmlFor="firstname">Last name : </label>
             <input
               type="text"
               id="lastname"
@@ -41,12 +41,14 @@ function FormEditUserInfo() {
               disabled
             />
           </div>
-          <button type="button" className="edit-button">
-            Save
-          </button>
-          <button className="edit-button" onClick={toggleEdit}>
-            Cancel
-          </button>
+          <div className="edit-buttons">
+            <button type="button" className="edit-buttons">
+              Save
+            </button>
+            <button className="edit-buttons" onClick={toggleEdit}>
+              Cancel
+            </button>
+          </div>
         </form>
       </div>
     </section>

@@ -23,7 +23,13 @@ body {
 
 .bg-dark {
   background-color: #12002b;
-  height: 860px;
+  height: 720px;
+  padding: 10px;
+}
+.bg-dark-form {
+  background-color: #12002b;
+  height: 100%;
+  padding: 10px;
 }
 
 .flex {
@@ -57,14 +63,14 @@ body {
   color: #2c3e50;
 }
 
-/******ajout style link et bouton Header *****/
+/******ajout link et bouton Header *****/
 .style-sign-icon {
   margin-right: 10px;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .logout-icon {
-  width: 18px;
+  width: 16px;
   margin-right: 10px;
   color: #fff;
 }
@@ -73,7 +79,7 @@ body {
   display: flex;
   align-items: center;
   padding: 8px;
-  font-size: 16px;
+  font-size: 14px;
   text-decoration: none;
 }
 
@@ -184,7 +190,7 @@ body {
 }
 
 .feature-item-title {
-  color: #222;
+  color: #2c3e50;
   font-size: 1.25rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
@@ -263,6 +269,8 @@ body {
   padding: 0;
 }
 
+/********** message erreur Login*******************/
+/*******************************************************/
 .account {
   display: flex;
   justify-content: space-between;
@@ -275,7 +283,7 @@ body {
   padding: 1.5rem;
   box-sizing: border-box;
   text-align: left;
-  margin-bottom: 2rem;
+  margin-top: 15px;
 }
 
 .account-amount {
@@ -326,6 +334,78 @@ body {
   color: #fff;
 }
 
+/*********************** component FormUserEdit *****************/
+.edit-user-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 20px;
+  background-color: #e1dbe7;
+  width: 80%;
+  margin: 0 auto;
+  flex-direction: column;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+.edit-user-title {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin: 10px 0;
+}
+
+.edit-input-wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  justify-content: center;
+}
+
+.edit-input-wrapper label {
+  color: #2c3e50;
+  width: 100px;
+  gap: 14px;
+}
+
+.edit-input-wrapper input {
+  padding: 6px 10px;
+  color: #2c3e50;
+  border-radius: 5px;
+  border: none;
+  font-size: 1rem;
+  width: 40%;
+}
+
+.edit-input-wrapper input:disabled {
+  background-color: #ccc;
+  color: #2c3e50;
+  cursor: not-allowed;
+}
+
+.edit-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.edit-buttons button {
+  width: 100px;
+  padding: 10px;
+  background-color: #00bc77;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.edit-buttons button:hover {
+  background-color: #012518;
+}
+/*********************************************/
+
 @media (min-width: 720px) {
   .account {
     flex-direction: row;
@@ -339,8 +419,13 @@ body {
     width: 200px;
   }
 
+  .edit-user-content {
+    width: 30%;
+  }
+
   .bg-dark {
     background-color: #12002b;
     height: 720px;
+    padding: 15px;
   }
 }
