@@ -1,10 +1,25 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import toggleEdit from "../pages/Profile";
+import { updateUsernameProfile } from "../redux/user/userThunks";
 
 function FormEditUserInfo() {
-  const { firstName, lastName } = useSelector((state) => state.user);
-  const [userName, setuserName] = useState("");
+  const {
+    firstName,
+    lastName,
+    userName: currentUserName,
+  } = useSelector((state) => state.user);
+  const [userName, setuserName] = useState(currentUserName);
+  const { status } = useSelector((state) => state.user);
+
+  const dispatch = useDispatch();
+
+  const handleUsername = async (e) => {
+    e.preventDefault();
+
+    // on envoie le userName pour modification
+    dispatch(updateUsernameProfile({ userName }));
+  };
 
   return (
     <section>
@@ -42,10 +57,15 @@ function FormEditUserInfo() {
             />
           </div>
           <div className="edit-buttons">
-            <button type="button" className="edit-buttons">
-              Save
+            <button
+              type="button"
+              className="edit-buttons"
+              onClick={handleUsername}
+              disabled={status === "loading"}
+            >
+              {status === "loading" ? "Mise à jour..." : "Save"}
             </button>
-            <button className="edit-buttons" onClick={toggleEdit}>
+            <button type="button" className="edit-buttons" onClick={toggleEdit}>
               Cancel
             </button>
           </div>
