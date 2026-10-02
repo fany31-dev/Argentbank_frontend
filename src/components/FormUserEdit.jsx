@@ -65,7 +65,7 @@ function FormEditUserInfo() {
             >
               {status === "loading" ? "Mise à jour..." : "Save"}
             </button>
-            <button type="button" className="edit-buttons" onClick={toggleEdit}>
+            <button className="edit-buttons" onClick={toggleEdit}>
               Cancel
             </button>
           </div>
