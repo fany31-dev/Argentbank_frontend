@@ -37,3 +37,47 @@ export const fetchUserProfile = createAsyncThunk(
     }
   },
 );
+
+/*******************************/
+export const updateUsernameProfile = createAsyncThunk(
+  "user/updateUsername",
+
+  async ({ userName }, { getState, rejectWithValue }) => {
+    try {
+      //recuperation du token dans store
+      const token = getState().auth.token;
+
+      // Validation côté client
+      if (!userName || userName.trim().length < 3) {
+        return rejectWithValue(
+          "Le nom d’utilisateur doit contenir au moins 3 caractères.",
+        );
+      }
+
+      const response = await fetch(`${baseUrl}/user/profile`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ userName }),
+      });
+
+      // Vérification de la réponse
+      if (!response.ok) {
+        return rejectWithValue({
+          status: response.status,
+          message:
+            "Erreur lors de la mise à jour." ||
+            `Erreur HTTP ${response.status}`,
+        });
+      }
+      const data = await response.json();
+
+      // Redux reçoit le token
+      return data.body;
+    } catch (error) {
+      return rejectWithValue({ message: error.message });
+    }
+  },
+);
