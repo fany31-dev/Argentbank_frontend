@@ -19,8 +19,8 @@ function LogoutButton() {
   return (
     <>
       <div className="main-nav-item-login">
-        <div>{userName || "test"} </div>
-        <i className="fa fa-user-circle style-sign-icon"></i>
+        <div className="style-username">{userName || "_"} </div>
+        <i className="fa fa-user-circle style-sign-icon login-icon"></i>
         <Link className="logout-button" onClick={handleLogout}>
           <img className="logout-icon" src={IconLogout} alt="icone out" /> Log
           Out

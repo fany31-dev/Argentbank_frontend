@@ -64,14 +64,25 @@ body {
 }
 
 /******ajout link et bouton Header *****/
+.style-username {
+  font-size: 16px;
+  font-weight: bold;
+  color: #42b983;
+  margin: 3px;
+}
+
 .style-sign-icon {
-  margin-right: 10px;
-  font-size: 14px;
+  font-size: 16px;
+  margin-right: 8px;
+}
+
+.login-icon {
+  color: #42b983;
 }
 
 .logout-icon {
   width: 16px;
-  margin-right: 10px;
+  margin-right: 5px;
   color: #fff;
 }
 
@@ -79,7 +90,7 @@ body {
   display: flex;
   align-items: center;
   padding: 8px;
-  font-size: 14px;
+  font-size: 16px;
   text-decoration: none;
 }
 
