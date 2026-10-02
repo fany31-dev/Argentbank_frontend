@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchUserProfile } from "./userThunks";
+import { fetchUserProfile, updateUsernameProfile } from "./userThunks";
 
 const userSlice = createSlice({
   name: "user",
@@ -36,6 +36,19 @@ const userSlice = createSlice({
       .addCase(fetchUserProfile.rejected, (state, action) => {
         state.status = "failed";
         state.userName = null;
+        state.error = action.payload?.message || "Erreur inconnue";
+      })
+      .addCase(updateUsernameProfile.pending, (state) => {
+        state.status = "loading";
+        state.error = null;
+      })
+      .addCase(updateUsernameProfile.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.userName = action.payload.userName;
+      })
+      .addCase(updateUsernameProfile.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload;
         state.error = action.payload?.message || "Erreur inconnue";
       });
   },
