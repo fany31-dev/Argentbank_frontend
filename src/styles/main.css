@@ -266,6 +266,18 @@ body {
   font-size: 20px;
   color: red;
 }
+
+/**********style message erreur username*******************/
+.message-error-username {
+  background-color: #ffbaba;
+  padding: 5px;
+  margin: 5px 0px;
+  border: 1px solid #c97272;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: red;
+}
+
 /*******************************************************/
 
 .footer {

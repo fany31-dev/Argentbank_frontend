@@ -48,10 +48,13 @@ export const updateUsernameProfile = createAsyncThunk(
       const token = getState().auth.token;
 
       // Validation côté client
-      if (!userName || userName.trim().length < 3) {
-        return rejectWithValue(
-          "Le nom d’utilisateur doit contenir au moins 3 caractères.",
-        );
+      if (!userName || userName.trim().length < 5) {
+        return rejectWithValue({
+          status: userName.status,
+          message:
+            "Le nom d’utilisateur doit contenir au moins 5 caractères" ||
+            `Erreur HTTP ${response.status}`,
+        });
       }
 
       const response = await fetch(`${baseUrl}/user/profile`, {

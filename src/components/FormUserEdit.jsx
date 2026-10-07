@@ -10,7 +10,7 @@ function FormEditUserInfo() {
     userName: currentUserName,
   } = useSelector((state) => state.user);
   const [userName, setuserName] = useState(currentUserName);
-  const { status } = useSelector((state) => state.user);
+  const { status, error } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
 
@@ -26,6 +26,9 @@ function FormEditUserInfo() {
       <div className="edit-user-content">
         <h1 className="edit-user-title">Edit user info</h1>
         <form>
+          {status === "failed" && (
+            <p className="message-error-username">{error}</p>
+          )}
           <div className="edit-input-wrapper">
             <label htmlFor="username">User name : </label>
             <input
