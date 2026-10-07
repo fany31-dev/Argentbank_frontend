@@ -108,9 +108,11 @@ paths:
       tags:
         - Transactions Module
       summary: Get a list of user accounts
-      description: Returns all accounts belonging to the authenticated user
+      description: API for Returns all accounts belonging to the authenticated user
+
       produces:
         - application/json
+
       responses:
         "200":
           description: Accounts successfully retrieved
@@ -127,15 +129,18 @@ paths:
       tags:
         - Transactions Module
       summary: Get a list of transactions for account
-      description: Returns all transactions for a specific account
+      description: API for fetching all transactions for a specific account
+
       parameters:
         - in: path
           name: accountId
           type: string
           description: Account ID
           required: true
+
       produces:
         - application/json
+
       responses:
         "200":
           description: Transactions successfully retrieved
@@ -144,23 +149,28 @@ paths:
         "401":
           description: Unauthorized
         "404":
-          description: Returns an error - No element found
+          description: Returns an error - Account not found
         "500":
           description: Internal Server Error
-  /transactions/{transactionsId}:
+  /transactions/{transactionId}:
     get:
       security:
         - Bearer: []
       tags:
         - Transactions Module
       summary: Get transaction elements
-      description: Fetch elements of specific transaction
+      description: API for fetching elements of a specific transaction
+
       parameters:
         - in: path
-          name: transactionsId
-          description: ID of the transaction
+          name: transactionId
+          description: Transaction ID
           required: true
           type: string
+
+      produces:
+        - application/json
+
       responses:
         "200":
           description: Transaction elements retrieved successfully
@@ -169,7 +179,44 @@ paths:
         "401":
           description: Unauthorized
         "404":
-          description: Transactions not found
+          description: Transaction not found
+        "500":
+          description: Internal Server Error
+
+    put:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions Module
+      summary: Update transaction elements
+      description: API for updating a transaction category and/or note
+
+      parameters:
+        - in: path
+          name: transactionId
+          description: Transaction ID
+          required: true
+          type: string
+
+        - in: body
+          name: body
+          description: Transaction information to update
+          required: true
+          schema:
+            $ref: "#/definitions/TransactionElementsUpdate"
+
+      produces:
+        - application/json
+
+      responses:
+        "200":
+          description: Transaction elements updated successfully
+          schema:
+            $ref: "#/definitions/TransactionElements"
+        "401":
+          description: Unauthorized
+        "404":
+          description: Transaction not found
         "500":
           description: Internal Server Error
 
@@ -272,19 +319,19 @@ definitions:
             transactionId:
               type: string
               description: Transaction ID
-            Date:
+            date:
               type: string
               format: date
-              description: Date of transaction
+              description: Transaction date
             desciption:
               type: string
-              description: description Transactions
+              description: Transaction description
             amount:
               type: number
-              description: value transactions
+              description: Transaction amount
             balanceValue:
               type: number
-              description: value of balance
+              description: Account balance
   TransactionElements:
     type: object
     properties:
@@ -302,25 +349,35 @@ definitions:
             transactionId:
               type: string
               description: Transaction ID
-            Date:
+            date:
               type: string
               format: date
-              description: Date of transaction
+              description: Transaction date
             desciption:
               type: string
-              description: Description Transactions
+              description: Transaction description
             amount:
               type: number
-              description: Value transactions
+              description: Transaction amount
             balanceValue:
               type: number
-              description: Value of balance
+              description: Account balance
             transactionType:
               type: string
               description: Type of transaction
             category:
               type: string
-              description: Category of transaction
+              description: Transaction category
             note:
               type: string
-              description: To enter a comment
+              description: User note
+  TransactionElementsUpdate:
+    type: object
+    properties:
+      category:
+        type: string
+        description: Transaction category
+      note:
+        type: string
+        x-nullable: true
+        description: User note - set to null to delete
