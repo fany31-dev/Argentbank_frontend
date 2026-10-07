@@ -293,10 +293,10 @@ definitions:
             accountId:
               type: string
               description: Account ID
-            nameAccount:
+            title:
               type: string
               description: Account title
-            amountBalance:
+            accountBalance:
               type: number
               description: Account balance
             etatBalance:
@@ -323,7 +323,7 @@ definitions:
               type: string
               format: date
               description: Transaction date
-            desciption:
+            description:
               type: string
               description: Transaction description
             amount:
@@ -353,7 +353,7 @@ definitions:
               type: string
               format: date
               description: Transaction date
-            desciption:
+            description:
               type: string
               description: Transaction description
             amount:
