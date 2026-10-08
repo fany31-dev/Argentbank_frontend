@@ -108,7 +108,17 @@ paths:
       tags:
         - Transactions Module
       summary: Get a list of user accounts
-      description: API for Returns all accounts belonging to the authenticated user
+      description: API for Returns all accounts belonging to the authenticated user. Transactions can be filtered by month.
+
+      parameters:
+        - in: query
+          name: month
+          type: string
+          description: Filter transactions by month (YYYY-MM)
+          required: false
+          schema:
+            type: string
+            example: "2026-10"
 
       produces:
         - application/json
@@ -131,19 +141,13 @@ paths:
       tags:
         - Transactions Module
       summary: Get a list of transactions for account
-      description: API for fetching all transactions for a specific account. Transactions can be filtered by month.
+      description: API for fetching all transactions for a specific account.
       parameters:
         - in: path
           name: accountId
           type: string
           description: Account ID
           required: true
-
-        - in: query
-          name: month
-          type: string
-          description: Filter transactions by month (YYYY-MM)
-          required: false
 
       produces:
         - application/json
@@ -292,12 +296,6 @@ definitions:
   Accounts:
     type: object
     properties:
-      status:
-        type: integer
-        description: Status code
-      message:
-        type: string
-        description: Response message
       body:
         type: array
         items:
@@ -318,12 +316,6 @@ definitions:
   Transactions:
     type: object
     properties:
-      status:
-        type: integer
-        description: Status code
-      message:
-        type: string
-        description: Response message
       body:
         type: array
         items:
@@ -348,12 +340,6 @@ definitions:
   TransactionElements:
     type: object
     properties:
-      status:
-        type: integer
-        description: Status code
-      message:
-        type: string
-        description: Response message
       body:
         type: array
         items:
