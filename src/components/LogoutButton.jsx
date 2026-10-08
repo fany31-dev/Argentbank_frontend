@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import IconLogout from "@/assets/power-off-solid.png";
+import IconLogout from "@/assets/power-off-solid.webp";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/auth/authSlice";
 import { useNavigate } from "react-router-dom";

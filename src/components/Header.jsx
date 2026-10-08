@@ -14,6 +14,7 @@ function Header() {
             className="main-nav-logo-image"
             src={LogoArgentBank}
             alt="Argent Bank Logo"
+            fetchPriority="high"
           />
         </Link>
         <h1 className="sr-only">Argent Bank</h1>
