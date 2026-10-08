@@ -18,6 +18,7 @@ Ma mission principale était d'intégrer le front-end avec le back-end via des a
 • Configurer des routes API pour la communication client / serveur
 • Implémenter la gestion des données avec Redux pour assurer le fonctionnement du front
 • Utilisation de Redux pour gérer les données de l'application pour maintenir un état global cohérent à travers l'application.
+• Conception de la documentation API nécessaire à l'évolution du système avec SWAGGER 2.0
 
 ### Outils et Technologies utilisées
 
@@ -26,7 +27,8 @@ Ma mission principale était d'intégrer le front-end avec le back-end via des a
 • REACT ROUTER 7
 • VITE 8
 • REDUX
-• SWAGGER
+• SWAGGER 2.0
+• MONGODB
 • GITHUB
 • Aucune librairie REACT externe utilisée
 Note : Ce projet utilise les versions REACT, REACT ROUTER, VITE et REDUX fournies par le template initial.
@@ -34,6 +36,8 @@ Note : Ce projet utilise les versions REACT, REACT ROUTER, VITE et REDUX fournie
 #### Fonctionnalités principales
 
 Page /Home
+• Accueil - presentation des activités de la banque
+• Navigation et lien au clic sur SignIn vers la page /Login
 
 Page /Login
 • Form permettant la connexion à l'espace securisé avec Email et mot de passe
@@ -43,13 +47,15 @@ Page /Login
 • Création d'un bouton LogOut pour se déconnecter de l'espace utilisateur dédié
 
 Page /Profile
+• Form permettant la modification du Username de l'utilisateur
+• Mise à jour instantané du Username dans le navigateur et l'API avec REDUX
 
 Page /Error
 • Message d’erreur 404
 • Lien de retour vers l’accueil
 
 Navigation
-• Header + Footer
+• Header et Footer intégrés dans un composant Layout
 • Routes gérées avec REACT ROUTER
 
 **********************************************************************************
@@ -78,4 +84,4 @@ Une fois le serveur lancé, l’application sera accessible à l’adresse suiva
 ## Auteur
 
 Auteur : Stéphanie RAMBEAULT
-**Projet réalisé dans le cadre du parcours Intégrateur Web – OpenClassrooms**
+**"Projet 10 - Argent Bank" réalisé dans le cadre du parcours Intégrateur Web – OpenClassrooms**
