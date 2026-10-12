@@ -10,7 +10,7 @@ function Login() {
   const { token, status, error } = useSelector((state) => state.auth);
 
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("password456"); // ne pas oublier de supprimer //
+  const [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
