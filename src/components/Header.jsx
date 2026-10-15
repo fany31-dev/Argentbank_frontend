@@ -15,6 +15,8 @@ function Header() {
             src={LogoArgentBank}
             alt="Argent Bank Logo"
             fetchPriority="high"
+            width="200"
+            height="54"
           />
         </Link>
         <h1 className="sr-only">Argent Bank</h1>
