@@ -3,7 +3,6 @@ import IconLogout from "@/assets/power-off-solid.webp";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/auth/authSlice";
 import { useNavigate } from "react-router-dom";
-import { fetchUserProfile } from "../redux/user/userThunks";
 
 function LogoutButton() {
   const dispatch = useDispatch();
@@ -12,8 +11,7 @@ function LogoutButton() {
 
   const handleLogout = () => {
     dispatch(logout());
-    navigate("/login");
-    dispatch(fetchUserProfile);
+    navigate("/");
   };
 
   return (
